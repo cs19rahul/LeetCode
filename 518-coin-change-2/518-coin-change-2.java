@@ -7,6 +7,8 @@ class Solution {
      
         return count(coins,coins.length-1,amount,dp);
     }
+/*    // MEMORIZATION
+    
     int count(int[]a ,int index,int target,int[][]dp){
         //BASE CONDN
         if(index==0){
@@ -30,4 +32,30 @@ class Solution {
         
         
     }
+    */
+    
+    // DYNAMIC APPROACH
+    
+     int count(int[]a ,int index,int target,int[][]dp){
+//          base case
+         for(int i = 0 ;i<a.length;i++){
+             for(int t = 0 ;t<=target ;t++){
+                 if(t%a[i]==0) dp[i][t]=1;
+                 else dp[i][t]=0;
+             }
+         }
+            for(int i = 1 ; i < a.length ; i++ ){
+                    for(int t = 0 ; t<=target ; t++){
+                        int n_take  =  dp[i-1][t];
+                        int take = 0 ;
+                        if(a[i]<=t){
+                            take = dp[i][t-a[i]];
+                        }
+                        
+                        dp[i][t]= take+n_take;
+                    }
+            }
+         
+         return dp[a.length-1][target];
+     }
 }
