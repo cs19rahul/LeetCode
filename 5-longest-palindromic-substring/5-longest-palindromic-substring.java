@@ -1,17 +1,13 @@
 class Solution {
     public String longestPalindrome(String s) {
+        if(s.length()==1) return s;
         boolean[][] dp = new boolean[s.length()][s.length()];
         
         for(boolean[] i:dp){
             Arrays.fill(i,false);
         }
         form(dp,s);
-        // for(int i = 0 ;i<dp.length;i++){
-            // for(int j = 0 ;j<dp.length;j++){
-        //        System.out.print(dp[i][j]+" ");
-        //    }
-        //     System.out.println();
-        // }
+        
         boolean flag = false;
         int k=0 ,l=s.length()-1;
         for(int g = dp.length-1;g>=0;g--){
