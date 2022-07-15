@@ -1,6 +1,6 @@
 class Solution {
     public void solve(char[][] board) {
-        System.out.println(board.length + " "+board[0].length);
+       
         for(int i = 0 ; i < board.length ; i++){
             for(int j = 0 ; j< board[0].length ;j++){
                 if((i==0 || i == board.length-1 ||j==0||j==board[0].length-1) && board[i][j]=='O' ){
@@ -9,11 +9,7 @@ class Solution {
             }
         }
         
-         for(int i = 0 ; i < board.length ; i++ ){
-            for(int j = 0 ; j < board[0].length ;j++){
-                System.out.print(board[i][j]+" ");
-            }
-         System.out.println();}
+        
         
         
 //         update
