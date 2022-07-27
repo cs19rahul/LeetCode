@@ -15,23 +15,23 @@
  */
 class Solution {
    public void flatten(TreeNode root) {
-        ArrayList<TreeNode> al = new ArrayList<>();
+      
+        if(root == null)return;
+        if(root.left == null && root.right==null) return;
+        ArrayList<Integer> al = new ArrayList<>();
         
         gen(al,root);
-        TreeNode res= new TreeNode(0 , null ,null);
-        TreeNode temp =  res;
-
-        for(int i = 0 ; i < al.size() ;i++){
-            res.left = null ;
-            res.right  = al.get(i);
-            res  = res.right;
+        TreeNode temp = root;
+        
+        for(int i = 1 ; i < al.size() ;i++){
+            temp.left = null ;
+            temp.right  = new TreeNode(al.get(i),null,null);
+            temp  = temp.right;
         }
-        // root = temp.right;
     }
-    
-    void gen(ArrayList<TreeNode>al ,TreeNode root){
+    void gen(ArrayList<Integer>al ,TreeNode root){
         if(root==null) return ;
-        al.add(root);
+        al.add(root.val);
         gen(al,root.left);
         gen(al,root.right);
     }
